@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public class Menu {
+interface Menu {
+    void processUserChoice(String userChoice);
 }

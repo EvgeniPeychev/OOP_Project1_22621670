@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public class FileAction {
+interface FileAction {
+    void execute();
 }
