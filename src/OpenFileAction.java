@@ -4,12 +4,20 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 class OpenFile implements FileAction {
+    private String filePath;
+
+    public OpenFile(String filePath) {
+        this.filePath = filePath;
+    }
+
     @Override
     public void execute() {
-        System.out.print("Enter the path to the file: ");
-        Scanner scanner = new Scanner(System.in);
-        String filePath = scanner.nextLine();
+        if (filePath == null || filePath.isEmpty()) {
+            System.out.println("Path is required. Please enter a valid file path.");
+            return;
+        }
 
+        System.out.println("Opening File...");
         try {
             File file = new File(filePath);
 

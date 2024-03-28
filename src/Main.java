@@ -11,7 +11,14 @@ public class Main {
         do {
             System.out.print("> ");
             String userChoice = scanner.nextLine();
-            fileMenu.processUserChoice(userChoice);
+            if (userChoice.startsWith("Open ")) {
+                String[] parts = userChoice.split(" ", 2);
+                String path = parts[1];
+                fileActions.put("Open", new OpenFile(path));
+                fileMenu.processUserChoice("Open");
+            } else {
+                fileMenu.processUserChoice(userChoice);
+            }
         } while (true);
     }
 }
