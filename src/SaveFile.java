@@ -19,6 +19,11 @@ class SaveFile implements FileAction {
             File file = new File(filePath);
             FileWriter writer = new FileWriter(file);
 
+            String fileContent = PathSingleton.getInstance().getContent();
+            if (fileContent != null) {
+                writer.write(fileContent);
+            }
+
             writer.close();
             System.out.println("File saved successfully: " + filePath);
         } catch (IOException e) {

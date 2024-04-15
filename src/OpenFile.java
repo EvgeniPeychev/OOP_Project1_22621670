@@ -34,7 +34,8 @@ class OpenFile implements FileAction {
             }
 
             System.out.println("Opened file: " + filePath);
-            readFileContent(file);
+            String fileContent = readFileContent(file);
+            PathSingleton.getInstance().setContent(fileContent);
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found. Please enter a valid file path.");
@@ -56,11 +57,14 @@ class OpenFile implements FileAction {
         System.out.println("New XML file created: " + file.getAbsolutePath());
     }
 
-    private void readFileContent(File file) throws IOException {
+    private String readFileContent(File file) throws IOException {
+        StringBuilder contentBuilder = new StringBuilder();
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNextLine()) {
-                System.out.println(fileScanner.nextLine());
+                contentBuilder.append(fileScanner.nextLine()).append("\n");
             }
         }
+
+        return contentBuilder.toString();
     }
 }

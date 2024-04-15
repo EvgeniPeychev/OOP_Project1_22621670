@@ -1,6 +1,8 @@
+
 class PathSingleton {
     private static PathSingleton instance;
     private String path;
+    private String content;
 
     private PathSingleton() {
 
@@ -20,4 +22,13 @@ class PathSingleton {
     public String getPath() {
         return path;
     }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
 }
