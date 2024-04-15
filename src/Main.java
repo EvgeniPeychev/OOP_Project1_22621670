@@ -11,15 +11,17 @@ public class Main {
         do {
             System.out.print("> ");
             String userChoice = scanner.nextLine();
+
             if (userChoice.startsWith("Open ")) {
                 String[] parts = userChoice.split(" ", 2);
                 String path = parts[1];
-                fileActions.put("Open", new OpenFile(path));
+                PathSingleton.getInstance().setPath(path);
+                fileActions.put("Open", new OpenFile(PathSingleton.getInstance().getPath()));
                 fileMenu.processUserChoice("Open");
             } else if (userChoice.startsWith("Save as ")) {
-                String[] parts = userChoice.split("\"");
+                String[] parts = userChoice.split("Save as ");
                 if (parts.length >= 2) {
-                    String filePath = parts[1];
+                    String filePath = parts[1].trim();
                     fileActions.put("Save as", new SaveAsFile(filePath));
                     fileMenu.processUserChoice("Save as");
                 } else {

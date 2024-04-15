@@ -3,14 +3,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 class SaveFile implements FileAction {
-    private String filePath;
-
-    public SaveFile(String filePath) {
-        this.filePath = filePath;
-    }
 
     @Override
     public void execute() {
+        String filePath = PathSingleton.getInstance().getPath();
+
         if (filePath == null || filePath.isEmpty()) {
             System.out.println("No file is currently open.");
             return;
@@ -21,7 +18,6 @@ class SaveFile implements FileAction {
         try {
             File file = new File(filePath);
             FileWriter writer = new FileWriter(file);
-
 
             writer.close();
             System.out.println("File saved successfully: " + filePath);

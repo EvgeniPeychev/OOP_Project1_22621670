@@ -1,14 +1,9 @@
-import java.io.IOException;
-
 class CloseFile implements FileAction {
-    private String filePath;
-
-    public CloseFile(String filePath) {
-        this.filePath = filePath;
-    }
 
     @Override
     public void execute() {
+        String filePath = PathSingleton.getInstance().getPath();
+
         if (filePath == null || filePath.isEmpty()) {
             System.out.println("No file is currently open.");
             return;
@@ -16,7 +11,8 @@ class CloseFile implements FileAction {
 
         System.out.println("Closing File...");
 
-        filePath = null;
+        PathSingleton.getInstance().setPath(null);
+
         System.out.println("Successfully closed " + filePath);
     }
 }

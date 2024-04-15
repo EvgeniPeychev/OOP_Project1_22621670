@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 class OpenFile implements FileAction {
     private String filePath;
@@ -17,13 +18,18 @@ class OpenFile implements FileAction {
             return;
         }
 
+        if (!filePath.toLowerCase().endsWith(".xml")) {
+            System.out.println("Invalid file extension. File must end with .xml.");
+            return;
+        }
+
         System.out.println("Opening File...");
         try {
             File file = new File(filePath);
 
             if (!file.exists()) {
-                System.out.println("File does not exist. Creating a new file.");
-                createEmptyFile(file);
+                System.out.println("File does not exist. Creating a new XML file.");
+                createEmptyXMLFile(file);
                 return;
             }
 
@@ -37,12 +43,17 @@ class OpenFile implements FileAction {
         }
     }
 
-    private void createEmptyFile(File file) throws IOException {
-        if (file.createNewFile()) {
-            System.out.println("New file created: " + file.getAbsolutePath());
-        } else {
-            System.out.println("File already exists.");
+    private void createEmptyXMLFile(File file) throws IOException {
+        String xmlFilePath = filePath.endsWith(".xml") ? filePath : filePath + ".xml";
+        file = new File(xmlFilePath);
+
+        try (PrintWriter writer = new PrintWriter(file)) {
+            writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            writer.println("<root>");
+            writer.println("    <data></data>");
+            writer.println("</root>");
         }
+        System.out.println("New XML file created: " + file.getAbsolutePath());
     }
 
     private void readFileContent(File file) throws IOException {

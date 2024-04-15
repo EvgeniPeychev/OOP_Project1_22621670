@@ -11,8 +11,16 @@ class SaveAsFile implements FileAction {
 
     @Override
     public void execute() {
-        if (filePath == null || filePath.isEmpty()) {
-            System.out.println("Please provide a file path.");
+        String filePathCheck = PathSingleton.getInstance().getPath();
+
+
+        if (filePathCheck == null || filePathCheck.isEmpty()) {
+            System.out.println("No file is currently open.");
+            return;
+        }
+
+        if (!filePath.toLowerCase().endsWith(".xml")) {
+            System.out.println("File must have an extension of .XML");
             return;
         }
 
@@ -23,9 +31,8 @@ class SaveAsFile implements FileAction {
             FileWriter writer = new FileWriter(file);
 
 
-
             writer.close();
-            System.out.println("Successfully saved " + file.getName());
+            System.out.println("Successfully saved " + file.getName()+" in " + filePath );
         } catch (IOException e) {
             System.out.println("Error saving the file: " + e.getMessage());
         }

@@ -5,8 +5,8 @@ public class FileManager {
     public static Map<String, FileAction> createFileActions() {
         Map<String, FileAction> fileActions = new LinkedHashMap<>();
         fileActions.put("Open", new OpenFile(null));
-        fileActions.put("Close", new CloseFile(null));
-        fileActions.put("Save", new SaveFile(null));
+        fileActions.put("Close", new CloseFile());
+        fileActions.put("Save", new SaveFile());
         fileActions.put("Save as", new SaveAsFile(null));
         fileActions.put("Help", new HelpAction(fileActions));
         fileActions.put("Exit", new ExitAction());
