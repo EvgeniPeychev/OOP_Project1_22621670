@@ -1,17 +1,16 @@
-class CloseFile implements FileAction {
-
+public class Print implements FileAction{
     @Override
     public void execute() {
         String filePath = PathSingleton.getInstance().getPath();
+        String fileContent = PathSingleton.getInstance().getContent();
         if (filePath == null || filePath.isEmpty()) {
             System.out.println("No file is currently open.");
             return;
         }
 
-        System.out.println("Closing File...");
-        PathSingleton.getInstance().setContent(null);
-        PathSingleton.getInstance().setPath(null);
+        System.out.println(fileContent);
 
-        System.out.println("Successfully closed " + filePath);
     }
 }
+
+

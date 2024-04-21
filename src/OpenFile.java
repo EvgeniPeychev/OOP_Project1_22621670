@@ -35,13 +35,18 @@ class OpenFile implements FileAction {
 
             System.out.println("Opened file: " + filePath);
             String fileContent = readFileContent(file);
-            PathSingleton.getInstance().setContent(fileContent);
+
+            XMLIdUpdater idUpdater = new XMLIdUpdater();
+            String updatedContent = idUpdater.updateIdsInXML(fileContent);
+
+            PathSingleton.getInstance().setContent(updatedContent);
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found. Please enter a valid file path.");
         } catch (IOException e) {
             System.out.println("Error reading the file: " + e.getMessage());
         }
+
     }
 
     private void createEmptyXMLFile(File file) throws IOException {
@@ -54,6 +59,8 @@ class OpenFile implements FileAction {
             writer.println("    <data></data>");
             writer.println("</root>");
         }
+        String fileContent = readFileContent(file);
+        PathSingleton.getInstance().setContent(fileContent);
         System.out.println("New XML file created: " + file.getAbsolutePath());
     }
 
@@ -66,5 +73,6 @@ class OpenFile implements FileAction {
         }
 
         return contentBuilder.toString();
+
     }
 }

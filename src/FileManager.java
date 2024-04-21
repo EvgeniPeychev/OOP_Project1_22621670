@@ -10,6 +10,7 @@ public class FileManager {
         fileActions.put("Save as", new SaveAsFile(null));
         fileActions.put("Help", new HelpAction(fileActions));
         fileActions.put("Exit", new ExitAction());
+        fileActions.put("Print", new Print());
         return fileActions;
     }
 
