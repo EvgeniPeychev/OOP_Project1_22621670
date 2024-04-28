@@ -11,6 +11,7 @@ public class FileManager {
         fileActions.put("Help", new HelpAction(fileActions));
         fileActions.put("Exit", new ExitAction());
         fileActions.put("Print", new Print());
+        fileActions.put("Select", new SelectAttribute(null, null));
         return fileActions;
     }
 

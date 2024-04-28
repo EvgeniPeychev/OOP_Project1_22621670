@@ -27,9 +27,22 @@ public class Main {
                 } else {
                     System.out.println("Invalid file path.");
                 }
+            }
+            else if (userChoice.startsWith("Select ")) {
+                String[] parts = userChoice.split(" ");
+                if (parts.length >= 3) {
+                    String id = parts[1];
+                    String key = parts[2];
+                    fileActions.put("Select", new SelectAttribute(id, key));
+                    fileMenu.processUserChoice("Select");
+                } else {
+                    System.out.println("Invalid command. Usage: select <id> <key>");
+                }
             } else {
                 fileMenu.processUserChoice(userChoice);
             }
         } while (true);
     }
 }
+
+

@@ -23,6 +23,9 @@ class HelpAction implements FileAction {
                 case "Save as" -> "saves the currently open file in <file>";
                 case "Help" -> "prints this information";
                 case "Exit" -> "exits the program";
+                case "Print" -> "prints the content of the file";
+                case "Select" -> "select <id> <key>";
+
                 default -> "";
             };
 
