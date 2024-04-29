@@ -27,8 +27,7 @@ public class Main {
                 } else {
                     System.out.println("Invalid file path.");
                 }
-            }
-            else if (userChoice.startsWith("Select ")) {
+            } else if (userChoice.startsWith("Select ")) {
                 String[] parts = userChoice.split(" ");
                 if (parts.length >= 3) {
                     String id = parts[1];
@@ -38,11 +37,33 @@ public class Main {
                 } else {
                     System.out.println("Invalid command. Usage: select <id> <key>");
                 }
-            } else {
+            } else if (userChoice.startsWith("Set ")) {
+                String[] parts = userChoice.split(" ");
+                if (parts.length >= 4) {
+                    String id = parts[1];
+                    String key = parts[2];
+                    String value = parts[3];
+                    fileActions.put("Set", new SetAttribute(id, key, value));
+                    fileMenu.processUserChoice("Set");
+                } else {
+                    System.out.println("Invalid command. Usage: set <id> <key> <value>");
+                }
+            } else if (userChoice.startsWith("Children ")) {
+                String[] parts = userChoice.split(" ");
+                if (parts.length >= 2) {
+                    String id = parts[1];
+                    fileActions.put("Children", new ListChildrenAttributes(id));
+                    fileMenu.processUserChoice("Children");
+                } else {
+                    System.out.println("Invalid command. Usage: children <id>");
+                }
+            }
+            else {
                 fileMenu.processUserChoice(userChoice);
             }
         } while (true);
     }
 }
+
 
 

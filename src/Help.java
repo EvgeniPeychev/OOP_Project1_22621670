@@ -1,9 +1,9 @@
 import java.util.Map;
 
-class HelpAction implements FileAction {
+class Help implements FileAction {
     private Map<String, FileAction> fileActions;
 
-    public HelpAction(Map<String, FileAction> fileActions) {
+    public Help(Map<String, FileAction> fileActions) {
         this.fileActions = fileActions;
     }
 

@@ -8,10 +8,11 @@ public class FileManager {
         fileActions.put("Close", new CloseFile());
         fileActions.put("Save", new SaveFile());
         fileActions.put("Save as", new SaveAsFile(null));
-        fileActions.put("Help", new HelpAction(fileActions));
-        fileActions.put("Exit", new ExitAction());
+        fileActions.put("Help", new Help(fileActions));
+        fileActions.put("Exit", new Exit());
         fileActions.put("Print", new Print());
         fileActions.put("Select", new SelectAttribute(null, null));
+        fileActions.put("Set", new SetAttribute(null, null, null));
         return fileActions;
     }
 

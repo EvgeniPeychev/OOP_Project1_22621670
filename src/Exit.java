@@ -1,4 +1,4 @@
-class ExitAction implements FileAction {
+class Exit implements FileAction {
     @Override
     public void execute() {
         System.out.println("Exiting the program...");
