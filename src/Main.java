@@ -57,6 +57,35 @@ public class Main {
                 } else {
                     System.out.println("Invalid command. Usage: children <id>");
                 }
+            } else if (userChoice.startsWith("Child ")) {
+                String[] parts = userChoice.split(" ");
+                if (parts.length >= 3) {
+                    String id = parts[1];
+                    int n = Integer.parseInt(parts[2]);
+                    fileActions.put("Child", new ListNthChildAttributes(id, n));
+                    fileMenu.processUserChoice("Child");
+                } else {
+                    System.out.println("Invalid command. Usage: child <id> <n>");
+                }
+            } else if (userChoice.startsWith("Text ")) {
+                String[] parts = userChoice.split(" ");
+                if (parts.length >= 2) {
+                    String id = parts[1];
+                    fileActions.put("Text", new SelectText(id));
+                    fileMenu.processUserChoice("Text");
+                } else {
+                    System.out.println("Invalid command. Usage: Тext <id>");
+                }
+            } else if (userChoice.startsWith("Delete ")) {
+                String[] parts = userChoice.split(" ");
+                if (parts.length >= 3) {
+                    String id = parts[1];
+                    String key = parts[2];
+                    fileActions.put("Delete", new DeleteAttribute(id, key));
+                    fileMenu.processUserChoice("Delete");
+                } else {
+                    System.out.println("Invalid command. Usage: Delete <id> <key>");
+                }
             }
             else {
                 fileMenu.processUserChoice(userChoice);

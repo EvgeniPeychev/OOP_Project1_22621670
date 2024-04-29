@@ -13,6 +13,10 @@ public class FileManager {
         fileActions.put("Print", new Print());
         fileActions.put("Select", new SelectAttribute(null, null));
         fileActions.put("Set", new SetAttribute(null, null, null));
+        fileActions.put("Children", new ListChildrenAttributes(null));
+        fileActions.put("Child", new ListNthChildAttributes(null, 0));
+        fileActions.put("Text", new SelectText(null));
+        fileActions.put("Delete", new DeleteAttribute(null, null));
         return fileActions;
     }
 
