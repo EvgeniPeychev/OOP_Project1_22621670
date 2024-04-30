@@ -86,6 +86,16 @@ public class Main {
                 } else {
                     System.out.println("Invalid command. Usage: Delete <id> <key>");
                 }
+            } else if (userChoice.startsWith("Newchild ")) {
+                String[] parts = userChoice.split(" ");
+                if (parts.length >= 3) {
+                    String id = parts[1];
+                    String name = parts[2];
+                    fileActions.put("Newchild", new NewChild(id, name));
+                    fileMenu.processUserChoice("Newchild");
+                } else {
+                    System.out.println("Invalid command. Usage: Newchild <id> <name>");
+                }
             }
             else {
                 fileMenu.processUserChoice(userChoice);
@@ -93,6 +103,5 @@ public class Main {
         } while (true);
     }
 }
-
 
 
