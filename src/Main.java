@@ -96,6 +96,15 @@ public class Main {
                 } else {
                     System.out.println("Invalid command. Usage: Newchild <id> <name>");
                 }
+            } else if (userChoice.startsWith("Xpath ")) {
+                String[] parts = userChoice.split(" ", 2);
+                if (parts.length >= 2) {
+                    String xpath = parts[1];
+                    fileActions.put("Xpath", new XPath(xpath));
+                    fileMenu.processUserChoice("Xpath");
+                } else {
+                    System.out.println("Invalid command. Usage: Xpath <XPath>");
+                }
             }
             else {
                 fileMenu.processUserChoice(userChoice);

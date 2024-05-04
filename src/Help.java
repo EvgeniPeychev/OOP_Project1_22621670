@@ -30,7 +30,8 @@ class Help implements FileAction {
                 case "Child" -> "Access the nth descendant of an element";
                 case "Text" -> "Access the text of an element";
                 case "Delete" -> "Delete element attribute by key";
-                //case "Newchild" -> "Adding a new element successor.";
+                case "Newchild" -> "Adding a new element successor.";
+                case "Xpath" -> "Simple Xpath request";
                 default -> "";
             };
 

@@ -17,6 +17,8 @@ public class FileManager {
         fileActions.put("Child", new ListNthChildAttributes(null, 0));
         fileActions.put("Text", new SelectText(null));
         fileActions.put("Delete", new DeleteAttribute(null, null));
+        fileActions.put("Newchild", new NewChild(null, null));
+        fileActions.put("Xpath", new XPath(null));
         return fileActions;
     }
 
